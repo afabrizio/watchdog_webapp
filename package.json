@@ -1,0 +1,32 @@
+{
+    "name": "watchdog_webapp",
+    "version": "1.0.0",
+    "description": "Webcam streaming webapp built with React.",
+    "private": true,
+    "scripts": {
+        "build": "webpack",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/afabrizio/watchdog_webapp.git"
+    },
+    "keywords": [
+        "webcam",
+        "stream",
+        "react"
+    ],
+    "author": "A. Fabrizio",
+    "license": "UNLICENSED",
+    "bugs": {
+        "url": "https://github.com/afabrizio/watchdog_webapp/issues"
+    },
+    "homepage": "https://github.com/afabrizio/watchdog_webapp#readme",
+    "devDependencies": {
+        "css-loader": "^1.0.1",
+        "file-loader": "^2.0.0",
+        "style-loader": "^0.23.1",
+        "webpack": "^4.25.1",
+        "webpack-cli": "^3.1.2"
+    }
+}
