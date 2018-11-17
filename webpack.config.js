@@ -1,9 +1,18 @@
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 module.exports = {
-    entry: './src/index.js',
+    devServer: {
+        contentBase: './dist'
+    },
+    devtool: 'inline-source-map',
+    entry: {
+        authentication: './src/authentication.js',
+        app: './src/app.js'
+    },
     output: {
-        filename: 'bundle.js',
+        filename: '[name].js',
         path: path.resolve(__dirname, 'dist')
     },
     mode: 'development',
@@ -29,5 +38,14 @@ module.exports = {
                 ]
             }
         ]
-    }
+    },
+    plugins: [
+        new CleanWebpackPlugin([ 'dist' ]),
+        new HtmlWebpackPlugin({
+            meta: {
+                viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no'
+            },
+            title: 'WatchDog Webapp'
+        })
+    ]
 };
