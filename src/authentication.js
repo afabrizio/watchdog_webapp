@@ -1,6 +1,1 @@
-import './default.css';
-
-const root = document.createElement('div');
-root.textContent = 'watchdogs';
-
-document.body.appendChild(root);
+export const print = () => console.log('authentication.js line 3');

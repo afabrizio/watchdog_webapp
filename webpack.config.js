@@ -1,24 +1,37 @@
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
     devServer: {
-        contentBase: './dist'
+        contentBase: path.join(__dirname, 'public/'),
+		hotOnly: true,
+		port: 3000,
+		publicPath: 'http://localhost:3000/dist/'
     },
     devtool: 'inline-source-map',
     entry: {
-        authentication: './src/authentication.js',
-        app: './src/app.js'
+        app: './src/index.js',
     },
     output: {
-        filename: '[name].js',
+        filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist')
     },
     mode: 'development',
     module: {
         rules: [
-            {
+			{
+				test: /.(js|jsx)$/,
+				exclude: /(node_modules|bower_components)/,
+				loader: 'babel-loader',
+				options: {
+					presets: [
+						'@babel/env',
+					]
+				}
+			},
+			{
                 test: /\.css$/,
                 use: [
                     'style-loader',
@@ -46,6 +59,14 @@ module.exports = {
                 viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no'
             },
             title: 'WatchDog Webapp'
-        })
-    ]
+        }),
+		new webpack.HotModuleReplacementPlugin()
+    ],
+	resolve: {
+		extensions: [
+			'*',
+			'.js',
+			'.jsx'
+		]
+	}
 };
